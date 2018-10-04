@@ -6,3 +6,11 @@ services:
       - FASTCGI_PASS_HOST=php
     ports:
       - '8100:80'
+    volumes:
+      - ./tests:/tests:delegated
+      # Framework testing
+      - ./_host-volumes/yii2:/yii2:delegated
+      # Application testing
+      - ./_host-volumes/app:/app:delegated
+      # Composer cache
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
